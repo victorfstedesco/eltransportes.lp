@@ -17,7 +17,7 @@
         .hero-bg {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/empresa.jpeg');
             background-size: cover;
-            background-position: 0rem -28rem;
+        
             
         }
         
@@ -177,8 +177,8 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2 relative group">
-                    <div class="absolute inset-0 bg-red-600 rounded-lg transform translate-x-3 translate-y-3 transition group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                    <img src="empresa.jpeg" alt="Motorista EL Transportes" class="relative rounded-lg shadow-2xl w-full object-cover object-[0rem_-10rem] h-[500px] grayscale group-hover:grayscale-0 transition duration-500">
+                    <div class="absolute inset-0 bg-red-600 rounded-lg transform translate-x-3 translate-y-3 transition"></div>
+                    <img src="empresa.jpeg" alt="Motorista EL Transportes" class="relative rounded-lg shadow-2xl w-full object-cover  transition duration-500 xl:object-top">
                 </div>
                 <div class="md:w-1/2">
                     <h4 class="text-red-600 font-bold uppercase tracking-wider mb-2">Sobre Nós</h4>
@@ -227,13 +227,13 @@
                                     <img class="object-top" src="executivo/executivo1.jpeg" alt="Transporte Executivo 1">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="executivo/executivo2.jpeg" alt="Transporte Executivo 2">
+                                    <img src="executivo/executivo2.jpeg" class="object-top" alt="Transporte Executivo 2">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="executivo/executivo3.jpeg" alt="Transporte Executivo 3">
+                                    <img src="executivo/executivo3.jpeg" class="object-top" alt="Transporte Executivo 3">
                                 </div>
                                 <div class="carousel-slide">
-                                    <img src="executivo/executivo4.jpeg" alt="Transporte Executivo 4">
+                                    <img src="executivo/executivo4.jpeg" class="object-top" alt="Transporte Executivo 4">
                                 </div>
                             </div>
                             <button class="carousel-btn prev" onclick="moveCarousel('executivo', -1)">
