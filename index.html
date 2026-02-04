@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL Transportes Executivos | Maringá - PR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Ajuste no Hero para compensar o header branco se necessário, mas o fixed funciona bem */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/empresa.jpeg');
+            background-size: cover;
+            background-position: 0rem -28rem;
+            
+        }
+        
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .carousel,
+        .carousel-track,
+        .carousel-slide {
+            height: 600px;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            color: #dc2626;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-btn:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev {
+            left: 1rem;
+        }
+        
+        .carousel-btn.next {
+            right: 1rem;
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-slide img {
+                height: 100%;
+                min-height: 300px;
+            }
+            
+            .carousel,
+            .carousel-track,
+            .carousel-slide {
+                height: 300px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white text-gray-800 fixed w-full z-50 shadow-md transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-widest flex items-center gap-2">
+                <img class="h-12" src="Logo EL.jpeg" alt="">
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-sm uppercase tracking-wider font-medium text-gray-800">
+                <a href="#home" class="hover:text-red-600 transition">Início</a>
+                <a href="#servicos" class="hover:text-red-600 transition">Serviços</a>
+                <a href="#sobre" class="hover:text-red-600 transition">Sobre a EL</a>
+                <a href="#depoimentos" class="hover:text-red-600 transition">Depoimentos</a>
+            </nav>
+
+            <a href="https://wa.me/5544999292008" class="hidden md:inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-bold text-sm transition shadow-lg transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2"></i> Orçamento Rápido
+            </a>
+        </div>
+    </header>
+
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-6">
+        <div class="max-w-4xl text-white mt-16">
+            <p class="text-red-500 font-bold tracking-[0.2em] uppercase mb-4 animate-pulse">Referência em Maringá e Região</p>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight uppercase">
+                Vá mais longe com a <br>
+                <span class="text-red-600 italic">EL Transportes</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light">
+                Segurança, conforto e pontualidade para seus compromissos executivos, eventos sociais e viagens.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="https://wa.me/5544999292008" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl flex items-center justify-center border border-red-600">
+                    <i class="fab fa-whatsapp mr-2"></i> Agendar Corrida
+                </a>
+                <a href="#servicos" class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center">
+                    Nossos Serviços
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative group">
+                    <div class="absolute inset-0 bg-red-600 rounded-lg transform translate-x-3 translate-y-3 transition group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                    <img src="empresa.jpeg" alt="Motorista EL Transportes" class="relative rounded-lg shadow-2xl w-full object-cover object-[0rem_-10rem] h-[500px] grayscale group-hover:grayscale-0 transition duration-500">
+                </div>
+                <div class="md:w-1/2">
+                    <h4 class="text-red-600 font-bold uppercase tracking-wider mb-2">Sobre Nós</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Excelência é a nossa marca</h2>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        A <strong>EL Transportes Executivos</strong> nasceu com o propósito de elevar o padrão de mobilidade em Maringá. Entendemos que o transporte não é apenas sobre o destino, mas sobre a experiência do trajeto.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Com uma frota moderna e motoristas treinados, oferecemos um serviço personalizado que atende desde a urgência do dia a dia corporativo até a elegância exigida em casamentos e eventos especiais.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center text-gray-800 font-semibold">
+                            <i class="fas fa-shield-alt text-red-600 mr-3 text-xl"></i> Segurança Total
+                        </div>
+                        <div class="flex items-center text-gray-800 font-semibold">
+                            <i class="fas fa-clock text-red-600 mr-3 text-xl"></i> Pontualidade
+                        </div>
+                        <div class="flex items-center text-gray-800 font-semibold">
+                            <i class="fas fa-user-tie text-red-600 mr-3 text-xl"></i> Motoristas Qualificados
+                        </div>
+                        <div class="flex items-center text-gray-800 font-semibold">
+                            <i class="fas fa-star text-red-600 mr-3 text-xl"></i> Conforto Premium
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-red-600 font-bold uppercase tracking-widest text-sm">Nossos Serviços</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2 mb-4">Soluções em Transporte</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Executivo -->
+            <div class="max-w-6xl mx-auto mb-20">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="carousel" id="carousel-executivo">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img class="object-top" src="executivo/executivo1.jpeg" alt="Transporte Executivo 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="executivo/executivo2.jpeg" alt="Transporte Executivo 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="executivo/executivo3.jpeg" alt="Transporte Executivo 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="executivo/executivo4.jpeg" alt="Transporte Executivo 4">
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('executivo', -1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" onclick="moveCarousel('executivo', 1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots" id="dots-executivo"></div>
+                        </div>
+                        
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-red-600 text-white rounded-2xl mb-6">
+                                <i class="fas fa-briefcase text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-4">Transporte Executivo</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Translados profissionais para aeroportos, reuniões e eventos corporativos. 
+                                Discrição, pontualidade e veículos premium para sua jornada de negócios.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Carros executivos de alto padrão</span>
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Motoristas experientes e discretos</span>
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Disponibilidade 24/7</span>
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/5544999292008" class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold transition transform hover:scale-105 shadow-lg">
+                                <i class="fab fa-whatsapp mr-2"></i> Solicitar Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Casamento -->
+            <div class="max-w-6xl mx-auto mb-20">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="order-2 md:order-1 p-8 md:p-12 flex flex-col justify-center">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-900 text-white rounded-2xl mb-6">
+                                <i class="fas fa-gem text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-4">Casamentos</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Torne seu dia especial ainda mais memorável. Carros elegantes e serviço 
+                                impecável para noivas, noivos e padrinhos. Cada detalhe pensado para você.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Veículos luxuosos e decorados</span>
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Motorista trajado formalmente</span>
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Roteiro personalizado</span>
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/5544999292008" class="inline-flex items-center justify-center bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl font-semibold transition transform hover:scale-105 shadow-lg">
+                                <i class="fab fa-whatsapp mr-2"></i> Consultar Disponibilidade
+                            </a>
+                        </div>
+                        
+                        <div class="carousel order-1 md:order-2" id="carousel-casamento">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="casamento/casamento1.jpeg" alt="Casamento 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="casamento/casamento2.jpeg" alt="Casamento 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="casamento/casamento3.jpeg" alt="Casamento 3">
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('casamento', -1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" onclick="moveCarousel('casamento', 1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots" id="dots-casamento"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Taxi -->
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="carousel" id="carousel-taxi">
+                            <div class="carousel-track">
+                                <div class="carousel-slide">
+                                    <img src="taxi/taxi1.png" alt="Táxi 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="taxi/taxi2.png" alt="Táxi 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="taxi/taxi3.png" alt="Táxi 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="taxi/taxi4.png" alt="Táxi 4">
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel('taxi', -1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" onclick="moveCarousel('taxi', 1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots" id="dots-taxi"></div>
+                        </div>
+                        
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-red-600 text-white rounded-2xl mb-6">
+                                <i class="fas fa-taxi text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-4">Táxi & Encomendas</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Rapidez e agilidade quando você mais precisa. Serviço de táxi 24 horas 
+                                e entrega expressa de pequenas encomendas em Maringá e região.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Atendimento 24 horas</span>
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Entrega rápida de encomendas</span>
+                                </li>
+                                <li class="flex items-center text-gray-700">
+                                    <i class="fas fa-check-circle text-red-600 mr-3"></i>
+                                    <span>Preços justos e transparentes</span>
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/5544999292008" class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold transition transform hover:scale-105 shadow-lg">
+                                <i class="fab fa-whatsapp mr-2"></i> Chamar Táxi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel functionality
+        const carousels = {
+            executivo: { currentSlide: 0, totalSlides: 4 },
+            casamento: { currentSlide: 0, totalSlides: 3 },
+            taxi: { currentSlide: 0, totalSlides: 4 }
+        };
+
+        function initCarousel(name) {
+            const carousel = carousels[name];
+            const dotsContainer = document.getElementById(`dots-${name}`);
+            
+            // Create dots
+            for (let i = 0; i < carousel.totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(name, i);
+                dotsContainer.appendChild(dot);
+            }
+            
+            // Auto-play
+            setInterval(() => moveCarousel(name, 1), 5000);
+        }
+
+        function moveCarousel(name, direction) {
+            const carousel = carousels[name];
+            carousel.currentSlide = (carousel.currentSlide + direction + carousel.totalSlides) % carousel.totalSlides;
+            updateCarousel(name);
+        }
+
+        function goToSlide(name, index) {
+            carousels[name].currentSlide = index;
+            updateCarousel(name);
+        }
+
+        function updateCarousel(name) {
+            const carousel = carousels[name];
+            const track = document.querySelector(`#carousel-${name} .carousel-track`);
+            const dots = document.querySelectorAll(`#dots-${name} .carousel-dot`);
+            
+            track.style.transform = `translateX(-${carousel.currentSlide * 100}%)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousel.currentSlide);
+            });
+        }
+
+        // Initialize all carousels
+        initCarousel('executivo');
+        initCarousel('casamento');
+        initCarousel('taxi');
+    </script>
+
+    <section id="depoimentos" class="py-20 bg-zinc-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+             <i class="fas fa-quote-right text-[400px] text-white absolute -top-20 -right-20"></i>
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl font-bold mb-12">Experiência dos Passageiros</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-black/50 p-8 rounded-xl border border-gray-700 backdrop-blur-sm">
+                    <div class="flex text-yellow-500 mb-4 justify-center text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-300 mb-6 font-light">"A EL Transportes salvou minha viagem de negócios. Pontualidade britânica e um carro extremamente confortável. Virei cliente fiel."</p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center"><i class="fas fa-user"></i></div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-sm">Ricardo Mendes</h4>
+                            <p class="text-xs text-gray-400">Empresário</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-black/50 p-8 rounded-xl border border-gray-700 backdrop-blur-sm">
+                    <div class="flex text-yellow-500 mb-4 justify-center text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-300 mb-6 font-light">"Contratamos para o casamento e foi lindo. O motorista foi super atencioso e o carro estava brilhando. Recomendo muito!"</p>
+                    <div class="flex items-center justify-center gap-4">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center"><i class="fas fa-user"></i></div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-sm">Ana Paula & Marcos</h4>
+                            <p class="text-xs text-gray-400">Casamento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-r from-red-700 to-red-600 text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-6">Precisa ir a algum lugar?</h2>
+            <p class="mb-10 text-xl opacity-90 max-w-2xl mx-auto">A EL Transportes leva você com a segurança e o conforto que você merece. Atendimento em Maringá e região.</p>
+            <a href="https://wa.me/5544999292008" class="bg-white text-red-700 hover:bg-gray-100 px-12 py-5 rounded-full font-bold text-xl shadow-2xl transition inline-flex items-center gap-3 transform hover:-translate-y-1">
+                <i class="fab fa-whatsapp text-2xl"></i> Falar com Atendente
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-black flex items-center text-gray-400 py-12 border-t border-gray-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex gap-8">
+                <a href="https://www.instagram.com/eltransportesmga/" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://wa.me/5544999292008" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-500 hover:text-white transition duration-300">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+            </div>
+        </div>
+        <div class="text-center text-xs opacity-40 border-t border-gray-900">
+            &copy; 2026 EL Transportes Executivos. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5544999292008" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-2xl z-50 transition transform hover:scale-110 flex items-center justify-center w-16 h-16 group">
+        <i class="fab fa-whatsapp text-4xl group-hover:animate-bounce"></i>
+        <span class="absolute right-20 bg-white text-gray-800 px-4 py-2 rounded-lg text-sm font-bold shadow-lg opacity-0 group-hover:opacity-100 transition duration-300 w-max pointer-events-none">
+            Orçamento Online
+        </span>
+    </a>
+
+</body>
+</html>
